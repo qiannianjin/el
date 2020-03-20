@@ -32,6 +32,7 @@ public class WebControllerAop {
     @Before("executeService()")
     public void doBeforeAdvice(JoinPoint joinPoint){
         System.out.println("我是前置通知!!!");
+
         //获取目标方法的参数信息
         Object[] obj = joinPoint.getArgs();
         //AOP代理类的信息
@@ -52,6 +53,8 @@ public class WebControllerAop {
         HttpServletRequest request = (HttpServletRequest) requestAttributes.resolveReference(RequestAttributes.REFERENCE_REQUEST);
         //如果要获取Session信息的话，可以这样写：
         //HttpSession session = (HttpSession) requestAttributes.resolveReference(RequestAttributes.REFERENCE_SESSION);
+        System.out.println("请求信息"+signature);
+
         Enumeration<String> enumeration = request.getParameterNames();
         Map<String,String> parameterMap = new HashMap<>();
         while (enumeration.hasMoreElements()){
@@ -102,7 +105,7 @@ public class WebControllerAop {
     @AfterThrowing(value = "executeService()",throwing = "exception")
     public void doAfterThrowingAdvice(JoinPoint joinPoint,Throwable exception){
         //目标方法名：
-        System.out.println(joinPoint.getSignature().getName());
+        System.out.println("怎么说？"+joinPoint.getSignature().getName());
         if(exception instanceof NullPointerException){
             System.out.println("发生了空指针异常!!!!!");
         }
