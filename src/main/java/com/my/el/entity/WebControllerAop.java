@@ -53,6 +53,7 @@ public class WebControllerAop {
         HttpServletRequest request = (HttpServletRequest) requestAttributes.resolveReference(RequestAttributes.REFERENCE_REQUEST);
         //如果要获取Session信息的话，可以这样写：
         //HttpSession session = (HttpSession) requestAttributes.resolveReference(RequestAttributes.REFERENCE_SESSION);
+
         System.out.println("请求信息"+signature);
 
         Enumeration<String> enumeration = request.getParameterNames();

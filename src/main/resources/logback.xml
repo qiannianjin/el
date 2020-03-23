@@ -8,6 +8,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
+
     <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--如果只是想要 Info 级别的日志，只是过滤 info 还是会输出 Error 日志，因为 Error 的级别高，
         日志名称，如果没有File 属性，那么只会使用FileNamePattern的文件路径规则
@@ -49,6 +50,7 @@
             <appender-ref ref="STDOUT"/>
         </root>
     </springProfile>
+
     <springProfile name="prod">
         <root level="info">
             <appender-ref ref="STDOUT"/>
@@ -58,4 +60,5 @@
             <appender-ref ref="controllerLog" />
         </logger>
     </springProfile>
+
 </configuration>
